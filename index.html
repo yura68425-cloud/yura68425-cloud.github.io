@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Приглашение — Ваши имена</title>
+<style>
+  /* Базовая мобильная вёрстка, сделано для вертикальной моб. ориентации */
+  :root{--accent:#450909;--muted:#666}
+  html,body{height:100%;margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;}
+  body{background:#fff;color:#111;display:flex;flex-direction:column;align-items:center;padding:20px;box-sizing:border-box}
+  .container{max-width:420px;width:100%}
+  .hero{display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center;padding:18px 12px}
+  .date{font-weight:700;letter-spacing:4px;color:var(--accent)}
+  h1{margin:6px 0;font-size:28px}
+  .names{font-size:22px;font-weight:600}
+  .lead{color:var(--muted);margin:8px 0 18px}
+  .section{border-top:1px solid #eee;padding:16px 0}
+  .small{font-size:14px;color:var(--muted)}
+  .plan{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+  .plan .item{display:flex;justify-content:space-between;font-weight:600}
+  .btn{display:inline-block;padding:10px 18px;border-radius:30px;border:1px solid var(--accent);background:transparent;color:var(--accent);text-decoration:none;font-weight:600}
+  .contacts{font-size:14px;color:var(--muted);margin-top:8px}
+  /* RSVP form styling (simple) */
+  form.rsvp{display:flex;flex-direction:column;gap:8px}
+  input[type="text"], select, textarea{padding:10px;border:1px solid #ddd;border-radius:8px;font-size:15px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  footer{margin:18px 0 40px;font-size:13px;color:var(--muted);text-align:center}
+  /* countdown */
+  .count{display:flex;gap:8px;justify-content:center;margin-top:12px}
+  .count .col{background:#f8f4f4;padding:10px 12px;border-radius:8px;min-width:58px;text-align:center}
+  @media(min-width:900px){body{padding:40px} .container{max-width:780px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <div class="date">04 | 06 | 2026</div>
+    <h1>Мы женимся!</h1>
+    <div class="names">Дмитрий <br/> и <br/> Александра</div>
+    <p class="lead">Этот волнительный день мы хотим разделить с самыми дорогими и близкими нам людьми. Приглашаем на нашу свадьбу!</p>
+    <a class="btn" href="#rsvp">Заполнить анкету гостя</a>
+  </div>
+
+  <div class="section">
+    <div class="small">План дня</div>
+    <div class="plan">
+      <div class="item"><span>12:00</span><span>Сбор гостей у Дворца №2, Фурштатская 52</span></div>
+      <div class="item"><span>15:00</span><span>Празднование на площадке "Event Loft"</span></div>
+      <div class="item"><span>22:00</span><span>Окончание вечера</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="small">Место проведения</div>
+    <p class="small">Площадка "Event Loft", Набережная Реки Фонтанки, 59. На входе вас встретят и проводят в банкетный зал.</p>
+  </div>
+
+  <div class="section">
+    <div class="small">Дресс-код</div>
+    <p class="small">Мы не ограничиваем вас, но будем рады пастельным тонам. Мужчины — классические брюки и рубашки светлых оттенков.</p>
+  </div>
+
+  <div class="section" id="rsvp">
+    <div class="small">Анкета гостя</div>
+    <!-- Вариант A (простой): ссылка на Google Form -->
+    <p class="small">Проще всего: <a href="https://forms.gle/" target="_blank" rel="noopener">создать Google Form</a> и вставить ссылку сюда.</p>
+
+    <!-- Вариант B (локальная форма, отправка на email через mailto) -->
+    <form class="rsvp" onsubmit="alert('Спасибо! Для простоты этот пример отправляет данные через email. Подробно: используй Google Forms или Formspree для сбора.' ); return false;">
+      <input type="text" placeholder="Фамилия Имя" required />
+      <div class="grid">
+        <select><option>С удовольствием приду</option><option>Буду со второй половинкой</option><option>К сожалению, не смогу</option></select>
+        <select><option>Будут дети?</option><option>Да</option><option>Нет</option></select>
+      </div>
+      <textarea rows="3" placeholder="Комментарий (например предпочтения по напиткам)"></textarea>
+      <button class="btn" type="submit">Отправить</button>
+    </form>
+  </div>
+
+  <div class="section">
+    <div class="small">Контакты</div>
+    <div class="contacts">
+      Жених: 8 (964) 373-01-23<br/>
+      Невеста: 8 (953) 368-01-23
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="small">Ждём Вас через...</div>
+    <div class="count" id="countdown">
+      <div class="col"><div id="days">--</div><div class="small">Дней</div></div>
+      <div class="col"><div id="hours">--</div><div class="small">Часов</div></div>
+      <div class="col"><div id="mins">--</div><div class="small">Минут</div></div>
+      <div class="col"><div id="secs">--</div><div class="small">Секунд</div></div>
+    </div>
+  </div>
+
+  <footer>Внимание: страница оптимизирована под мобильные устройства в вертикальной ориентации.</footer>
+</div>
+
+<script>
+  // Countdown to 2026-06-04 12:00:00 (local)
+  const target = new Date('2026-06-04T12:00:00');
+  function tick(){
+    const now = new Date();
+    let diff = Math.max(0, target - now);
+    const d = Math.floor(diff/86400000); diff-=d*86400000;
+    const h = Math.floor(diff/3600000); diff-=h*3600000;
+    const m = Math.floor(diff/60000); diff-=m*60000;
+    const s = Math.floor(diff/1000);
+    document.getElementById('days').textContent = d;
+    document.getElementById('hours').textContent = h;
+    document.getElementById('mins').textContent = m;
+    document.getElementById('secs').textContent = s;
+  }
+  tick(); setInterval(tick,1000);
+</script>
+</body>
+</html>
