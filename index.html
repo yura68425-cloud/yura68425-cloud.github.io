@@ -5,39 +5,73 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Приглашение — НА СВАДЬБУ</title>
 <style>
-    :root {
-      /* старый код можешь оставить */
-    }
+   /* Стиль, похожий на макет №4 */
+body {
+  font-family: "Georgia", serif;
+  color: #3c3c3c;
+  background-color: #fffdfa;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
 
-    /* 🌸 Стиль текста на сайте */
-    body {
-      font-family: "Georgia", serif;  
-      color: #3c3c3c;                
-      background-color: #fffaf7;     
-    }
+h1 {
+  font-size: 32px;
+  color: #450909;
+  text-align: center;
+  margin: 12px 0;
+}
 
-    h1, h2, h3 {
-      color: #b5835a;                
-      text-transform: uppercase;     
-      letter-spacing: 2px;           
-      font-weight: bold;
-    }
+.names {
+  font-size: 24px;
+  color: #450909;
+  font-weight: 600;
+  text-align: center;
+}
 
-    p {
-      font-size: 18px;               
-      line-height: 1.6;              
-      color: #444;
-    }
+.date {
+  font-size: 18px;
+  color: #450909;
+  text-align: center;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
 
-    a {
-      color: #b5835a;                
-      text-decoration: none;         
-    }
+.lead {
+  text-align: center;
+  font-size: 16px;
+  color: #666;
+  margin: 0 auto 16px;
+  max-width: 300px;
+}
 
-    a:hover {
-      color: #8b4513;                
-    }
-  </style>
+.section {
+  padding: 16px 12px;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #450909;
+  border-radius: 30px;
+  color: #450909;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color .2s, color .2s;
+}
+
+.btn:hover {
+  background-color: #450909;
+  color: #fff;
+}
+
+@media (min-width: 600px) {
+  h1 { font-size: 36px; }
+  .leaders { font-size: 18px; }
+}
+ </style>
 
   /* Базовая мобильная вёрстка, сделано для вертикальной моб. ориентации */
   :root{--accent:#450909;--muted:#666}
