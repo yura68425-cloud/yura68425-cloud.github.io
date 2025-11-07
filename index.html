@@ -1,189 +1,114 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Приглашение — НА СВАДЬБУ</title>
-<style>
-   /* Стиль, похожий на макет №4 */
-body {
-  font-family: "Georgia", serif;
-  color: #3c3c3c;
-  background-color: #fffdfa;
-  margin: 0;
-  padding: 0;
-  line-height: 1.5;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Наш праздник</title>
 
-h1 {
-  font-size: 32px;
-  color: #450909;
-  text-align: center;
-  margin: 12px 0;
-}
+  <!-- Подключаем красивые шрифты -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
-.names {
-  font-size: 24px;
-  color: #450909;
-  font-weight: 600;
-  text-align: center;
-}
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Montserrat", sans-serif;
+      background: linear-gradient(to bottom, #fffafa, #ffe6f0);
+      color: #4b2e2e;
+      text-align: center;
+      line-height: 1.6;
+    }
 
-.date {
-  font-size: 18px;
-  color: #450909;
-  text-align: center;
-  letter-spacing: 3px;
-  margin-bottom: 8px;
-}
+    header {
+      background: rgba(255,255,255,0.8);
+      padding: 40px 20px 20px;
+      backdrop-filter: blur(4px);
+    }
 
-.lead {
-  text-align: center;
-  font-size: 16px;
-  color: #666;
-  margin: 0 auto 16px;
-  max-width: 300px;
-}
+    .names {
+      font-family: "Great Vibes", cursive;
+      font-size: 58px;
+      color: #b26b7c;
+      margin-bottom: 10px;
+    }
 
-.section {
-  padding: 16px 12px;
-  border-top: 1px solid #eee;
-  text-align: center;
-}
+    .date {
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #88505e;
+      margin-bottom: 30px;
+    }
 
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border: 1px solid #450909;
-  border-radius: 30px;
-  color: #450909;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background-color .2s, color .2s;
-}
+    .divider {
+      width: 100px;
+      height: 2px;
+      background-color: #b26b7c;
+      margin: 20px auto;
+      border-radius: 2px;
+    }
 
-.btn:hover {
-  background-color: #450909;
-  color: #fff;
-}
+    section {
+      background: rgba(255,255,255,0.9);
+      margin: 20px;
+      padding: 25px 15px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    }
 
-@media (min-width: 600px) {
-  h1 { font-size: 36px; }
-  .leaders { font-size: 18px; }
-}
- </style>
+    h2 {
+      font-family: "Great Vibes", cursive;
+      font-size: 34px;
+      color: #b26b7c;
+      margin-top: 0;
+    }
 
-  /* Базовая мобильная вёрстка, сделано для вертикальной моб. ориентации */
-  :root{--accent:#450909;--muted:#666}
-  html,body{height:100%;margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;}
-  body{background:#fff;color:#111;display:flex;flex-direction:column;align-items:center;padding:20px;box-sizing:border-box}
-  .container{max-width:420px;width:100%}
-  .hero{display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center;padding:18px 12px}
-  .date{font-weight:700;letter-spacing:4px;color:var(--accent)}
-  h1{margin:6px 0;font-size:28px}
-  .names{font-size:22px;font-weight:600}
-  .lead{color:var(--muted);margin:8px 0 18px}
-  .section{border-top:1px solid #eee;padding:16px 0}
-  .small{font-size:14px;color:var(--muted)}
-  .plan{display:flex;flex-direction:column;gap:10px;margin-top:8px}
-  .plan .item{display:flex;justify-content:space-between;font-weight:600}
-  .btn{display:inline-block;padding:10px 18px;border-radius:30px;border:1px solid var(--accent);background:transparent;color:var(--accent);text-decoration:none;font-weight:600}
-  .contacts{font-size:14px;color:var(--muted);margin-top:8px}
-  /* RSVP form styling (simple) */
-  form.rsvp{display:flex;flex-direction:column;gap:8px}
-  input[type="text"], select, textarea{padding:10px;border:1px solid #ddd;border-radius:8px;font-size:15px}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-  footer{margin:18px 0 40px;font-size:13px;color:var(--muted);text-align:center}
-  /* countdown */
-  .count{display:flex;gap:8px;justify-content:center;margin-top:12px}
-  .count .col{background:#f8f4f4;padding:10px 12px;border-radius:8px;min-width:58px;text-align:center}
-  @media(min-width:900px){body{padding:40px} .container{max-width:780px}}
-</style>
+    p {
+      font-size: 18px;
+      color: #4b2e2e;
+      margin-bottom: 15px;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 20px;
+      font-size: 14px;
+      color: #9c737d;
+    }
+
+    img.decor {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 600px) {
+      .names { font-size: 72px; }
+      h2 { font-size: 40px; }
+      p { font-size: 20px; }
+    }
+  </style>
 </head>
+
 <body>
-<div class="container">
-  <div class="hero">
-    <div class="date">06 / 16 / 2026</div>
-    <h1>Мы женимся!</h1>
-    <div class="names">Юрий <br/> и <br/> Анна</div>
-    <p class="lead">Этот волнительный день мы хотим разделить с самыми дорогими и близкими нам людьми. Приглашаем на нашу свадьбу!</p>
-    <a class="btn" href="#rsvp">Заполнить анкету гостя</a>
-  </div>
+  <header>
+    <h1 class="names">Имя и Имя</h1>
+    <div class="divider"></div>
+    <p class="date">12 июля 2025</p>
+  </header>
 
-  <div class="section">
-    <div class="small">Приблизительный план дня</div>
-    <div class="plan">
-      <div class="item"><span>17:00</span><span>Сбор гостей у Ресторана</span></div>
-      <div class="item"><span>17:30</span><span>Начало церемонии, регистрации брака</span></div>
-      <div class="item"><span>18:00</span><span>Начало банкета </span></div>
-       <div class="item"><span>23:40</span><span>Окончания вечера  </span></div>
-    </div>
-  </div>
+  <section>
+    <img class="decor" src="https://i.imgur.com/TPc3s4D.png" alt="flowers">
+    <h2>Приглашение</h2>
+    <p>Дорогие друзья! Мы рады пригласить вас на наш особенный день.</p>
+    <p>Этот праздник любви, нежности и новых воспоминаний состоится совсем скоро.  
+    Мы будем счастливы разделить этот момент с вами.</p>
+  </section>
 
-  <div class="section">
-    <div class="small">Место проведения</div>
-    <p class="small">Ресторан Поместье, по адресу Авиационная 3</p>
-  </div>
-
-  <div class="section">
-    <div class="small">Дресс-код</div>
-    <p class="small">Мы не ограничиваем вас, но будем рады пастельным тонам. Мужчины — классические брюки и рубашки светлых оттенков.</p>
-  </div>
-
-  <div class="section" id="rsvp">
-    <div class="small">Анкета гостя</div>
-    <!-- Вариант A (простой): ссылка на Google Form -->
-    <p class="small">Проще всего: <a href="https://forms.gle/" target="_blank" rel="noopener">создать Google Form</a> и вставить ссылку сюда.</p>
-
-    <!-- Вариант B (локальная форма, отправка на email через mailto) -->
-    <form class="rsvp" onsubmit="alert('Спасибо! Для простоты этот пример отправляет данные через email. Подробно: используй Google Forms или Formspree для сбора.' ); return false;">
-      <input type="text" placeholder="Фамилия Имя" required />
-      <div class="grid">
-        <select><option>С удовольствием приду</option><option>Буду со второй половинкой</option><option>К сожалению, не смогу</option></select>
-        <select><option>Будут дети?</option><option>Да</option><option>Нет</option></select>
-      </div>
-      <textarea rows="3" placeholder="Комментарий (например предпочтения по напиткам)"></textarea>
-      <button class="btn" type="submit">Отправить</button>
-    </form>
-  </div>
-
-  <div class="section">
-    <div class="small">Контакты</div>
-    <div class="contacts">
-      Жених: 8 (964) 373-01-23<br/>
-      Невеста: 8 (953) 368-01-23
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="small">Ждём Вас через...</div>
-    <div class="count" id="countdown">
-      <div class="col"><div id="days">--</div><div class="small">Дней</div></div>
-      <div class="col"><div id="hours">--</div><div class="small">Часов</div></div>
-      <div class="col"><div id="mins">--</div><div class="small">Минут</div></div>
-      <div class="col"><div id="secs">--</div><div class="small">Секунд</div></div>
-    </div>
-  </div>
-
-  <footer>Внимание: страница оптимизирована под мобильные устройства в вертикальной ориентации.</footer>
-</div>
-
-<script>
-  // Countdown to 2026-06-04 12:00:00 (local)
-  const target = new Date('2026-06-04T12:00:00');
-  function tick(){
-    const now = new Date();
-    let diff = Math.max(0, target - now);
-    const d = Math.floor(diff/86400000); diff-=d*86400000;
-    const h = Math.floor(diff/3600000); diff-=h*3600000;
-    const m = Math.floor(diff/60000); diff-=m*60000;
-    const s = Math.floor(diff/1000);
-    document.getElementById('days').textContent = d;
-    document.getElementById('hours').textContent = h;
-    document.getElementById('mins').textContent = m;
-    document.getElementById('secs').textContent = s;
-  }
-  tick(); setInterval(tick,1000);
-</script>
+  <footer>
+    <p>С любовью, Имя и Имя</p>
+  </footer>
 </body>
 </html>
