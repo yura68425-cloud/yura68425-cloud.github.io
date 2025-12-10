@@ -1,170 +1,1076 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Наш праздник</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Алексей и Мария | Свадебное приглашение</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8B7355;
+            --secondary: #D4B896;
+            --accent: #C19A6B;
+            --light: #F8F4EF;
+            --dark: #5D4037;
+            --text: #333333;
+            --calendar-bg: #FFF9F0;
+        }
 
-  <!-- Шрифты -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <!-- Анимации -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-  <style>
-    /* === ОБЩИЙ СТИЛЬ === */
-    body {
-      margin: 0;
-      font-family: "Montserrat", sans-serif;
-      background: linear-gradient(to bottom, #fff7f9, #ffe6ef);
-      color: #4a2a2a;
-      overflow-x: hidden;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    section {
-      padding: 60px 20px;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            background: var(--light);
+            line-height: 1.6;
+            background-image: url('https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-blend-mode: overlay;
+            background-color: rgba(248, 244, 239, 0.92);
+        }
 
-    h1, h2, h3 {
-      color: #b35a6a;
-      margin-bottom: 15px;
-      letter-spacing: 1px;
-    }
+        /* Герой секция */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(139, 115, 85, 0.85), rgba(212, 184, 150, 0.7)),
+                        url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            color: white;
+            position: relative;
+        }
 
-    h1 {
-      font-family: "Great Vibes", cursive;
-      font-size: 64px;
-      margin-top: 20px;
-    }
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
 
-    p {
-      font-size: 18px;
-      color: #4a2a2a;
-      line-height: 1.6;
-    }
+        .hero .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 280px;
+        }
 
-    .btn {
-      display: inline-block;
-      background-color: transparent;
-      border: 1px solid #b35a6a;
-      color: #b35a6a;
-      padding: 12px 30px;
-      border-radius: 40px;
-      text-decoration: none;
-      font-weight: 600;
-      margin-top: 25px;
-      transition: 0.3s;
-    }
+        .hero .names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.2rem;
+            margin: 25px 0;
+            line-height: 1.1;
+            font-weight: 700;
+        }
 
-    .btn:hover {
-      background-color: #b35a6a;
-      color: #fff;
-    }
+        .hero .date {
+            font-size: 1.8rem;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.3);
+            margin-top: 20px;
+        }
 
-    /* === ФОН === */
-    .hero {
-      background: url("https://images.unsplash.com/photo-1603551384499-6b34b51a29a2?auto=format&fit=crop&w=900&q=80") center/cover no-repeat;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: white;
+            font-size: 1.5rem;
+        }
 
-    .hero h1 {
-      color: #fff;
-      font-size: 72px;
-    }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-10px) translateX(-50%); }
+            60% { transform: translateY(-5px) translateX(-50%); }
+        }
 
-    .hero p {
-      color: #fff;
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
+        /* Основной контент */
+        .content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            background: rgba(255, 255, 255, 0.88);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(139, 115, 85, 0.15);
+            margin-top: -50px;
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+          }
 
-    /* === БЛОКИ === */
-    .section-title {
-      font-family: "Great Vibes", cursive;
-      font-size: 42px;
-      color: #b35a6a;
-    }
+        /* Секции */
+        .section {
+            margin-bottom: 60px;
+            animation: fadeUp 0.8s ease-out;
+        }
 
-    .details {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 20px;
-    }
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .details div {
-      background: rgba(255,255,255,0.8);
-      border-radius: 15px;
-      padding: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
 
-    footer {
-      background: #f7dde4;
-      padding: 30px;
-      text-align: center;
-      font-size: 14px;
-      color: #6a4a4a;
-    }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--accent);
+            margin: 10px auto 0;
+        }
 
-    @media (min-width: 700px) {
-      h1 { font-size: 86px; }
-      .details { flex-direction: row; justify-content: center; }
-      .details div { width: 30%; }
-    }
-  </style>
+        /* Таймер обратного отсчета */
+        .countdown-timer {
+            background: var(--calendar-bg);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(139, 115, 85, 0.1);
+        }
+
+        .timer-title {
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .timer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .timer-item {
+            text-align: center;
+            background: white;
+            padding: 20px 10px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .timer-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .timer-label {
+            font-size: 0.85rem;
+            color: var(--dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Календарь */
+        .calendar-section {
+            background: var(--calendar-bg);
+            border-radius: 20px;
+            padding: 30px 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(139, 115, 85, 0.1);
+        }
+
+        .calendar-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .calendar-month {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .calendar-year {
+            font-size: 1rem;
+            color: var(--dark);
+            opacity: 0.8;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 12px;
+        }
+
+        .calendar-day-name {
+            text-align: center;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.9rem;
+            padding: 8px 0;
+            text-transform: uppercase;
+        }
+
+        .calendar-day {
+            text-align: center;
+            padding: 15px 5px;
+            border-radius: 10px;
+            font-weight: 500;
+            background: white;
+            transition: all 0.3s;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+        }
+
+        .calendar-day.empty {
+            background: transparent;
+            box-shadow: none;
+            visibility: hidden;
+        }
+
+        .calendar-day.wedding-day {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(193, 154, 107, 0.4);
+            font-weight: 700;
+            position: relative;
+        }
+
+        .calendar-day.wedding-day::after {
+            content: '❤️';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            font-size: 0.9rem;
+        }
+
+        .calendar-note {
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        /* Секция "О нас" */
+        .couple-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .heart-divider {
+            text-align: center;
+            margin: 25px 0;
+            color: var(--accent);
+            font-size: 1.8rem;
+        }
+
+        /* Кнопка карты */
+        .map-button-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 18px 30px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(193, 154, 107, 0.3);
+        }
+
+        .map-btn:hover, .map-btn:active {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(139, 115, 85, 0.4);
+        }
+
+        .map-btn i {
+            font-size: 1.4rem;
+        }
+
+        /* Секция "Детали" */
+        .details-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .detail-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent);
+        }
+
+        .detail-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .detail-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .detail-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+
+        .detail-content p {
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        /* Анкета гостя */
+        .rsvp-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid rgba(139, 115, 85, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rsvp-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent), var(--primary));
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: 500;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s;
+            background: #fcfcfc;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: white;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            transition: all 0.3s;
+            background: #fcfcfc;
+        }
+
+        .radio-option:hover {
+            border-color: var(--secondary);
+            background: #fffaf5;
+        }
+
+        .radio-option.selected {
+            border-color: var(--accent);
+            background: #fff9f0;
+        }
+
+        .radio-input {
+            margin-right: 15px;
+            width: 20px;
+            height: 20px;
+            accent-color: var(--accent);
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .checkbox-option {
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .checkbox-option input {
+            margin-right: 10px;
+            accent-color: var(--accent);
+        }
+
+        .checkbox-option label {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            transition: all 0.3s;
+            background: #fcfcfc;
+        }
+
+        .checkbox-option input:checked + label {
+            border-color: var(--accent);
+            background: #fff9f0;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(193, 154, 107, 0.3);
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(90deg, var(--primary), var(--dark));
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 115, 85, 0.4);
+        }
+
+        .form-note {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Секция "Просьбы и пожелания" */
+        .wishes-section {
+            background: #FFF9F0;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(139, 115, 85, 0.1);
+            border-left: 5px solid var(--accent);
+        }
+
+        .wishes-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .wish-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px dashed rgba(139, 115, 85, 0.2);
+        }
+
+        .wish-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .wish-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            margin-right: 15px;
+            float: left;
+        }
+
+        .wish-content {
+            overflow: hidden;
+        }
+
+        .wish-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+
+        .wish-content p {
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .wishes-note {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-style: italic;
+            border: 1px solid rgba(193, 154, 107, 0.3);
+        }
+
+        /* Секция "Расписание" */
+        .timeline {
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--secondary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -28px;
+            top: 3px;
+            width: 18px;
+            height: 18px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--secondary);
+        }
+
+        .timeline-time {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-event {
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 3px;
+            font-size: 1.1rem;
+        }
+
+        .timeline-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Секция "Контакты" */
+        .contact-options {
+            display: grid;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-decoration: none;
+            color: var(--text);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .contact-btn:active {
+            transform: scale(0.98);
+            background: var(--light);
+        }
+
+        .contact-btn i {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .contact-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+        }
+
+        .contact-info p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* Футер */
+        .footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 50px;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+
+        .footer-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-text {
+            font-size: 1.1rem;opacity: 0.9;
+            max-width: 300px;
+            margin: 0 auto 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hashtag {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-top: 20px;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Кнопка "Наверх" */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 100;
+            border: none;
+            text-decoration: none;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Украшения фона */
+        .floral-decoration {
+            position: absolute;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floral-1 {
+            top: 50px;
+            left: 20px;
+            font-size: 100px;
+            color: var(--accent);
+            transform: rotate(15deg);
+        }
+
+        .floral-2 {
+            bottom: 100px;
+            right: 20px;
+            font-size: 80px;
+            color: var(--secondary);
+            transform: rotate(-10deg);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.3rem; }
+            .hero .names { font-size: 2.8rem; }
+            .hero .date { font-size: 1.5rem; padding: 10px 20px; }
+            .section-title { font-size: 2rem; }
+            .couple-photo { width: 170px; height: 170px; font-size: 3.5rem; }
+            .detail-card { padding: 20px; }
+            .footer-names { font-size: 2rem; }
+            .timer-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .timer-item { padding: 15px 5px; }
+            .timer-number { font-size: 1.8rem; }
+            .calendar-day { padding: 12px 3px; font-size: 0.9rem; }
+            .checkbox-group { flex-direction: column; }
+            .checkbox-option { min-width: 100%; }
+            .rsvp-section, .wishes-section { padding: 20px; }
+            .wish-icon { float: none; margin: 0 auto 15px; display: block; }
+            .wish-content { text-align: center; }
+            .content { margin: -30px 15px 0; padding: 40px 15px; }
+            .floral-decoration { display: none; }
+        }
+
+        @media (max-width: 350px) {
+            .hero .names { font-size: 2.3rem; }
+            .hero .subtitle { font-size: 1rem; }
+            .section { margin-bottom: 50px; }
+            .timer-grid { grid-template-columns: 1fr; }
+            .calendar-grid { gap: 8px; }
+        }
+    </style>
 </head>
-
 <body>
-  <!-- === ГЛАВНЫЙ ЭКРАН === -->
-  <section class="hero animate__animated animate__fadeIn">
-    <h1>Имя и Имя</h1>
-    <p>12 июля 2025</p>
-    <a href="#invite" class="btn">Подробнее</a>
-  </section>
+    <!-- Герой секция -->
+    <section class="hero" id="home">
+        <h1>Мы женимся!</h1>
+        <p class="subtitle">Приглашаем вас разделить с нами самый счастливый день</p>
+        <div class="names">Алексей<br>и<br>Мария</div>
+        <div class="date">16 июня 2026 · Вторник</div>
+        <a href="#timer" class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
 
-  <!-- === ПРИГЛАШЕНИЕ === -->
-  <section id="invite" class="animate__animated animate__fadeInUp">
-    <h2 class="section-title">Приглашение</h2>
-    <p>Дорогие друзья! Мы счастливы пригласить вас на наш особенный день.  
-       Этот праздник любви и радости состоится совсем скоро.  
-       Мы будем счастливы разделить его с вами!</p>
-  </section>
-
-  <!-- === ПРОГРАММА === -->
-  <section id="program" class="animate__animated animate__fadeInUp">
-    <h2 class="section-title">Программа дня</h2>
-    <div class="details">
-      <div>
-        <h3>12:00</h3>
-        <p>Сбор гостей</p>
-      </div>
-      <div>
-        <h3>14:00</h3>
-        <p>Церемония</p>
-      </div>
-      <div>
-        <h3>16:00</h3>
-        <p>Праздничный ужин</p>
-      </div>
+    <!-- Украшения фона -->
+    <div class="floral-decoration floral-1">
+        <i class="fas fa-leaf"></i>
     </div>
-  </section>
+    <div class="floral-decoration floral-2">
+        <i class="fas fa-feather-alt"></i>
+    </div>
 
-  <!-- === МЕСТО === -->
-  <section id="place" class="animate__animated animate__fadeInUp">
-    <h2 class="section-title">Место проведения</h2>
-    <p>Ресторан “Event Loft”, ул. Примерная 12</p>
-  </section>
+    <!-- Основной контент -->
+    <main class="content">
+        <!-- Таймер обратного отсчета -->
+        <section class="section" id="timer">
+            <h2 class="section-title">До свадьбы осталось</h2>
+            
+            <div class="countdown-timer">
+                <div class="timer-title">Наш день приближается!</div>
+                <div class="timer-grid">
+                    <div class="timer-item">
+                        <div class="timer-number" id="days">000</div>
+                        <div class="timer-label">Дней</div>
+                    </div>
+                    <div class="timer-item">
+                        <div class="timer-number" id="hours">00</div>
+                        <div class="timer-label">Часов</div>
+                    </div>
+                    <div class="timer-item">
+                        <div class="timer-number" id="minutes">00</div>
+                        <div class="timer-label">Минут</div>
+                    </div>
+                    <div class="timer-item">
+                        <div class="timer-number" id="seconds">00</div>
+                        <div class="timer-label">Секунд</div>
+                    </div>
+                </div>
+            </div>
 
-  <!-- === КОНТАКТЫ === -->
-  <section id="contacts" class="animate__animated animate__fadeInUp">
-    <h2 class="section-title">Контакты</h2>
-    <p>Жених: +7 (900) 000-00-00<br>Невеста: +7 (900
+            <!-- Календарь -->
+            <div class="calendar-section">
+                <div class="calendar-header">
+                    <div class="calendar-month">Июнь 2026</div>
+                    <div class="calendar-year">Год нашей свадьбы</div>
+                </div>
+                
+                <div class="calendar-grid">
+                    <!-- Дни недели -->
+                    <div class="calendar-day-name">Пн</div>
+                    <div class="calendar-day-name">Вт</div>
+                    <div class="calendar-day-name">Ср</div>
+                    <div class="calendar-day-name">Чт</div>
+                    <div class="calendar-day-name">Пт</div>
+                    <div class="calendar-day-name">Сб</div>
+                    <div class="calendar-day-name">Вс</div>
+                    
+                    <!-- Пустые дни до 1 июня (1 июня - понедельник) -->
+                    <!-- 1 июня 2026 - понедельник -->
+                    <div class="calendar-day">1</div>
+                    <div class="calendar-day">2</div>
+                    <div class="calendar-day">3</div>
+                    <div class="calendar-day">4</div>
+                    <div class="calendar-day">5</div>
+                    <div class="calendar-day">6</div>
+                    <div class="calendar-day">7</div>
+                    
+                    <div class="calendar-day">8</div>
+                    <div class="calendar-day">9</div>
+                    <div class="calendar-day">10</div>
+                    <div class="calendar-day">11</div>
+                    <div class="calendar-day">12</div>
+                    <div class="calendar-day">13</div>
+                    <div class="calendar-day">14</div>
+                    
+                    <div class="calendar-day">15</div>
+                    <div class="calendar-day wedding-day">16</div>
+                    <div class="calendar-day">17</div>
+                    <div class="calendar-day">18</div>
+                    <div class="calendar-day">19</div>
+                    <div class="calendar-day">20</div>
+                    <div class="calendar-day">21</div>
+                    
+                    <div class="calendar-day">22</div>
+                    <div class="calendar-day">23</div>
+                    <div class="calendar-day">24</div>
+                    <div class="calendar-day">25</div>
+                    <div class="calendar-day">26</div>
+                    <div class="calendar-day">27</div>
+                    <div class="calendar-day">28</div>
+                    
+                    <div class="calendar-day">29</div>
+                    <div class="calendar-day">30</div>
+                    <div class="calendar-day empty"></div>
+                    <div class="calendar-day empty"></div>
+                    <div class="calendar-day empty"></div>
+                    <div class="calendar-day empty"></div>
+                    <div class="calendar-day empty"></div>
+                </div>
+                
+                <div class="calendar-note">
+                    ❤️ 16 июня (вторник) — наш особенный день!
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция"О нас" -->
+        <section class="section" id="about">
+            <div class="couple-photo">
+                <i class="fas fa-heart"></i>
+            </div>
+            <h2 class="section-title">Наша история</h2>
+            <p class="about-text">
+                Наша встреча была случайностью, но с самого первого взгляда мы поняли — это судьба. Пять лет любви, поддержки и взаимного роста привели нас к этому важному моменту.
+            </p>
+            <div class="heart-divider">
+                <i class="fas fa-heart"></i>
+            </div>
+            <p class="about-text">
+                Теперь мы хотим скрепить наш союз перед самыми близкими и дорогими людьми. Ваше присутствие сделает этот день по-настоящему особенным.
+            </p>
+        </section>
+
+        <!-- Секция "Детали" -->
+        <section class="section" id="details">
+            <h2 class="section-title">Детали мероприятия</h2>
+            
+            <div class="details-grid">
+                <div class="detail-card">
+                    <div class="detail-header">
+                        <div class="detail-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="detail-title">Дата и время</h3>
+                    </div>
+                    <div class="detail-content">
+                        <p><strong>Свадьба:</strong> 16 июня 2026 (вторник)</p>
+                        <p><strong>Сбор гостей:</strong> 15:30</p>
+                        <p><strong>Церемония:</strong> 16:00</p>
+                        <p><strong>Банкет:</strong> 17:00</p>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-header">
+                        <div class="detail-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 class="detail-title">Место проведения</h3>
+                    </div>
+                    <div class="detail-content">
+                        <p><strong>Ресторан "Белая веранда"</strong></p>
+                        <p>г. Москва, ул. Цветочная, 12</p>
+                        <p style="margin-top: 10px; color: var(--accent);">
+                            <i class="fas fa-car"></i> Есть парковка для гостей
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Кнопка карты -->
+                <div class="map-button-container">
+                    <a href="https://yandex.ru/maps/?text=Москва, ул. Цветочная, 12, Ресторан Белая веранда" 
+                       target="_blank" 
+                       class="map-btn">
+                        <i class="fas fa-map-marked-alt"></i>
+                        Посмотреть на карте
+                    </a>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-header">
+                        <div class="detail-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <h3 class="detail-title">Дресс-код</h3>
+                    </div>
+                    <div class="detail-content">
+                        <p><strong>Классический, однотонные цвета:</strong></p>
+                        <p><strong>Мужчины:</strong> Костюмы классического кроя</p>
+                        <p><strong>Женщины:</strong> Платья или элегантные костюмы</p>
+                        <p style="margin-top: 10px; color: var(--accent);">
+                            <i class="fas fa-palette"></i> Предпочтительные цвета: бежевый, белый, золотой, тёмно-синий, бордовый
+                        </p>
+                        <p style="font-size: 0.95rem; color: #666; margin-top: 10px;">
+                            Пожалуйста, избегайте ярких и пёстрых принтов
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Анкета для гостей (БЕЗ ПУНКТА О ДЕТЯХ) -->
+        <section class="section" id="rsvp">
+          <h2 class="section-title">Анкета гостя</h2>
+            <p style="text-align: center; margin-bottom: 30px; font-size: 1.1rem; color: var(--dark);">
+                Пожалуйста, заполните форму до <strong style="color: var(--accent);">1 июня 2026</strong>
+            </p>
+            
+            <div class="rsvp-section">
+                <form id="guestForm">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Фамилия и Имя</label>
+                        <input type="text" id="name" class="input-field" placeholder="Иванов Иван" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Подтвердите свое присутствие</label>
+                        <div class="radio-group">
