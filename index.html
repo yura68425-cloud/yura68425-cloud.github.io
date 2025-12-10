@@ -48,7 +48,7 @@
             background: linear-gradient(rgba(139, 115, 85, 0.85), rgba(212, 184, 150, 0.7)),
                         url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
             background-size: cover;
-            background-position: center;
+            background-position: center 30%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -57,6 +57,16 @@
             padding: 20px;
             color: white;
             position: relative;
+        }
+
+        /* Мобильная версия фона */
+        @media (max-width: 768px) {
+            .hero {
+                background: linear-gradient(rgba(139, 115, 85, 0.85), rgba(212, 184, 150, 0.7)),
+                            url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&crop=left');
+                background-position: left center;
+                background-size: cover;
+            }
         }
 
         .hero h1 {
@@ -120,7 +130,8 @@
             position: relative;
             z-index: 2;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);}
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
 
         /* Секции */
         .section {
@@ -461,6 +472,7 @@
             border-radius: 12px;
             transition: all 0.3s;
             background: #fcfcfc;
+            cursor: pointer;
         }
 
         .radio-option:hover {
@@ -478,37 +490,75 @@
             width: 20px;
             height: 20px;
             accent-color: var(--accent);
+            cursor: pointer;
         }
 
-        .checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
+        .drinks-section {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 2px solid rgba(139, 115, 85, 0.1);
+        }
+
+        .drinks-title {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .drinks-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
+            margin-top: 15px;
         }
 
-        .checkbox-option {
-            flex: 1;
-            min-width: 140px;
+        @media (max-width: 480px) {
+            .drinks-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        .checkbox-option input {
-            margin-right: 10px;
-            accent-color: var(--accent);
-        }
-
-        .checkbox-option label {
+        .drink-option {
             display: flex;
             align-items: center;
-            padding: 12px 15px;
+            padding: 12px;
             border: 2px solid #eee;
             border-radius: 12px;
             transition: all 0.3s;
             background: #fcfcfc;
+            cursor: pointer;
         }
 
-        .checkbox-option input:checked + label {
-            border-color: var(--accent);
-            background: #fff9f0;
+        .drink-option:hover {
+            border-color: var(--secondary);
+            background: #fffaf5;
+        }
+
+        .drink-option input[type="checkbox"]:checked + .drink-label {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .drink-option input[type="checkbox"] {
+            margin-right: 10px;
+            accent-color: var(--accent);
+            width: 18px;
+            height: 18px;
+        }
+
+        .drink-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .drink-icon {
+            color: var(--accent);
+            font-size: 1.2rem;
         }
 
         .submit-btn {
@@ -524,7 +574,7 @@
             transition: all 0.3s;
             font-family: 'Cormorant Garamond', serif;
             letter-spacing: 1px;
-            margin-top: 10px;
+            margin-top: 20px;
             box-shadow: 0 5px 15px rgba(193, 154, 107, 0.3);
         }
 
@@ -542,35 +592,68 @@
             font-style: italic;
         }
 
-        /* Секция "Просьбы и пожелания" */
-        .wishes-section {
-            background: #FFF9F0;
+        /* Секция "Детали и пожелания" */
+        .wishes-details-section {
+            background: linear-gradient(135deg, #FFF9F0 0%, #FFF5E8 100%);
             border-radius: 20px;
-            padding: 30px;
+            padding: 40px 30px;
             margin: 40px 0;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             border: 1px solid rgba(139, 115, 85, 0.1);
-            border-left: 5px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wishes-details-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent), var(--primary));
         }
 
         .wishes-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--primary);
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 40px;
+            position: relative;
         }
 
-        .wish-item {
-            margin-bottom: 25px;
-            padding-bottom: 25px;
-            border-bottom: 1px dashed rgba(139, 115, 85, 0.2);
+        .wishes-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background: var(--accent);
+            margin: 10px auto 0;
         }
 
-        .wish-item:last-child {
-            border-bottom: none;
+        .wish-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--accent);
+            transition: transform 0.3s;
+        }
+
+        .wish-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .wish-card:last-child {
             margin-bottom: 0;
-            padding-bottom: 0;
+        }
+
+        .wish-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
         }
 
         .wish-icon {
@@ -584,23 +667,20 @@
             color: white;
             font-size: 1.3rem;
             margin-right: 15px;
-            float: left;
-        }
-
-        .wish-content {
-            overflow: hidden;
+            flex-shrink: 0;
         }
 
         .wish-content h3 {
             font-family: 'Cormorant Garamond', serif;
             color: var(--primary);
-            margin-bottom: 8px;
-            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
         }
 
         .wish-content p {
             color: var(--dark);
-            line-height: 1.6;
+            line-height: 1.7;
+            font-size: 1.05rem;
         }
 
         .wishes-note {
@@ -613,6 +693,7 @@
             color: var(--primary);
             font-style: italic;
             border: 1px solid rgba(193, 154, 107, 0.3);
+            font-family: 'Cormorant Garamond', serif;
         }
 
         /* Секция "Расписание" */
@@ -757,7 +838,8 @@
         }
 
         .footer-text {
-            font-size: 1.1rem;opacity: 0.9;
+            font-size: 1.1rem;
+            opacity: 0.9;
             max-width: 300px;
             margin: 0 auto 30px;
             position: relative;
@@ -839,11 +921,8 @@
             .timer-item { padding: 15px 5px; }
             .timer-number { font-size: 1.8rem; }
             .calendar-day { padding: 12px 3px; font-size: 0.9rem; }
-            .checkbox-group { flex-direction: column; }
-            .checkbox-option { min-width: 100%; }
-            .rsvp-section, .wishes-section { padding: 20px; }
-            .wish-icon { float: none; margin: 0 auto 15px; display: block; }
-            .wish-content { text-align: center; }
+            .rsvp-section, .wishes-details-section { padding: 20px; }
+            .wish-card { padding: 20px; }
             .content { margin: -30px 15px 0; padding: 40px 15px; }
             .floral-decoration { display: none; }
         }
@@ -884,7 +963,8 @@
             <h2 class="section-title">До свадьбы осталось</h2>
             
             <div class="countdown-timer">
-                <div class="timer-title">Наш день приближается!</div><div class="timer-grid">
+                <div class="timer-title">Наш день приближается!</div>
+                <div class="timer-grid">
                     <div class="timer-item">
                         <div class="timer-number" id="days">000</div>
                         <div class="timer-label">Дней</div>
@@ -922,7 +1002,6 @@
                     <div class="calendar-day-name">Вс</div>
                     
                     <!-- Пустые дни до 1 июня (1 июня - понедельник) -->
-                    <!-- 1 июня 2026 - понедельник -->
                     <div class="calendar-day">1</div>
                     <div class="calendar-day">2</div>
                     <div class="calendar-day">3</div>
@@ -970,7 +1049,7 @@
             </div>
         </section>
 
-        <!-- Секция"О нас" -->
+        <!-- Секция "О нас" -->
         <section class="section" id="about">
             <div class="couple-photo">
                 <i class="fas fa-heart"></i>
@@ -1002,72 +1081,4 @@
                     <div class="detail-content">
                         <p><strong>Свадьба:</strong> 16 июня 2026 (вторник)</p>
                         <p><strong>Сбор гостей:</strong> 15:30</p>
-                        <p><strong>Церемония:</strong> 16:00</p>
-                        <p><strong>Банкет:</strong> 17:00</p>
-                    </div>
-                </div>
-
-                <div class="detail-card">
-                    <div class="detail-header">
-                        <div class="detail-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <h3 class="detail-title">Место проведения</h3>
-                    </div>
-                    <div class="detail-content">
-                        <p><strong>Ресторан "Белая веранда"</strong></p>
-                        <p>г. Москва, ул. Цветочная, 12</p>
-                        <p style="margin-top: 10px; color: var(--accent);">
-                            <i class="fas fa-car"></i> Есть парковка для гостей
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Кнопка карты -->
-                <div class="map-button-container">
-                    <a href="https://yandex.ru/maps/?text=Москва, ул. Цветочная, 12, Ресторан Белая веранда" 
-                       target="_blank" 
-                       class="map-btn">
-                        <i class="fas fa-map-marked-alt"></i>
-                        Посмотреть на карте
-                    </a>
-                </div>
-
-                <div class="detail-card">
-                    <div class="detail-header">
-                        <div class="detail-icon">
-                            <i class="fas fa-tshirt"></i>
-                        </div>
-                        <h3 class="detail-title">Дресс-код</h3>
-                    </div>
-                    <div class="detail-content">
-                        <p><strong>Классический, однотонные цвета:</strong></p>
-                        <p><strong>Мужчины:</strong> Костюмы классического кроя</p>
-                        <p><strong>Женщины:</strong> Платья или элегантные костюмы</p>
-                        <p style="margin-top: 10px; color: var(--accent);">
-                            <i class="fas fa-palette"></i> Предпочтительные цвета: бежевый, белый, золотой, тёмно-синий, бордовый
-                        </p>
-                        <p style="font-size: 0.95rem; color: #666; margin-top: 10px;">
-                            Пожалуйста, избегайте ярких и пёстрых принтов
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Анкета для гостей (БЕЗ ПУНКТА О ДЕТЯХ) -->
-        <section class="section" id="rsvp"><h2 class="section-title">Анкета гостя</h2>
-            <p style="text-align: center; margin-bottom: 30px; font-size: 1.1rem; color: var(--dark);">
-                Пожалуйста, заполните форму до <strong style="color: var(--accent);">1 июня 2026</strong>
-            </p>
-            
-            <div class="rsvp-section">
-                <form id="guestForm">
-                    <div class="form-group">
-                        <label class="form-label" for="name">Фамилия и Имя</label>
-                        <input type="text" id="name" class="input-field" placeholder="Иванов Иван" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Подтвердите свое присутствие</label>
-                        <div class="radio-group">
+                       
