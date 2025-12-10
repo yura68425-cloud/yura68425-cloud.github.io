@@ -1081,4 +1081,393 @@
                     <div class="detail-content">
                         <p><strong>Свадьба:</strong> 16 июня 2026 (вторник)</p>
                         <p><strong>Сбор гостей:</strong> 15:30</p>
-                       
+                        <p><strong>Церемония:</strong> 16:00</p>
+                        <p><strong>Банкет:</strong> 17:00</p>
+                    </div>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-header">
+                        <div class="detail-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 class="detail-title">Место проведения</h3>
+                    </div>
+                    <div class="detail-content">
+                        <p><strong>Ресторан "Белая веранда"</strong></p>
+                        <p>г. Москва, ул. Цветочная, 12</p>
+                        <p style="margin-top: 10px; color: var(--accent);">
+                            <i class="fas fa-car"></i> Есть парковка для гостей
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Кнопка карты -->
+                <div class="map-button-container">
+                    <a href="https://yandex.ru/maps/?text=Москва, ул. Цветочная, 12, Ресторан Белая веранда" 
+                       target="_blank" 
+                       class="map-btn">
+                        <i class="fas fa-map-marked-alt"></i>
+                        Посмотреть на карте
+                    </a>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-header">
+                        <div class="detail-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <h3 class="detail-title">Дресс-код</h3>
+                    </div>
+                    <div class="detail-content">
+                        <p><strong>Классический, однотонные цвета:</strong></p>
+                        <p><strong>Мужчины:</strong> Костюмы классического кроя</p>
+                        <p><strong>Женщины:</strong> Платья или элегантные костюмы</p>
+                        <p style="margin-top: 10px; color: var(--accent);">
+                            <i class="fas fa-palette"></i> Предпочтительные цвета: бежевый, белый, золотой, тёмно-синий, бордовый
+                        </p>
+                        <p style="font-size: 0.95rem; color: #666; margin-top: 10px;">
+                            Пожалуйста, избегайте ярких и пёстрых принтов
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция "Детали и пожелания" -->
+        <section class="section" id="wishes">
+            <h2 class="section-title">Наши пожелания</h2>
+            
+            <div class="wishes-details-section">
+                <h3 class="wishes-title">Несколько важных деталей</h3>
+                
+                <div class="wish-card">
+                    <div class="wish-header">
+                        <div class="wish-icon">
+                            <i class="fas fa-glass-cheers"></i>
+                        </div>
+                        <div class="wish-content">
+                            <h3>О подарках и букетах</h3>
+                            <p>Если вы планировали подарить нам букет цветов, то бутылочка алкогольного напитка с вашими пожеланиями будет ему лучшей заменой! Не ломайте голову насчет подарков, мы с удовольствием примем вклад в бюджет нашей молодой семьи.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wish-card">
+                    <div class="wish-header">
+                        <div class="wish-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <div class="wish-content">
+                            <h3>Только для взрослых</h3>
+                            <p>Чтобы сделать этот вечер особенным и спокойным, мы решили провести его только для взрослых. Будем благодарны за понимание. Пожалуйста, планируйте отдых без маленьких детей.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wish-card">
+                    <div class="wish-header">
+                        <div class="wish-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="wish-content">
+                            <h3>Важное участие</h3>
+                            <p>Вы — важная часть нашего праздника! Мы очень хотим, чтобы вы танцевали и веселились, пусть этот день будет наполнен улыбками и яркими воспоминаниями! Будьте собой, не стесняйтесь!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wishes-note">
+                    <i class="fas fa-heart" style="color: var(--accent); margin-right: 10px;"></i>
+                    Спасибо, что разделяете с нами этот особенный день!
+                </div>
+            </div>
+        </section>
+
+        <!-- Анкета для гостей -->
+        <section class="section" id="rsvp">
+            <h2 class="section-title">Анкета гостя</h2>
+            <p style="text-align: center; margin-bottom: 30px; font-size: 1.1rem; color: var(--dark);">
+                Пожалуйста, заполните форму до <strong style="color: var(--accent);">1 июня 2026</strong>
+            </p>
+            
+            <div class="rsvp-section">
+                <form id="guestForm">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Фамилия и Имя</label>
+                        <input type="text" id="name" class="input-field" placeholder="Иванов Иван" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Подтвердите свое присутствие</label>
+                        <div class="radio-group">
+                            <div class="radio-option" onclick="selectRadio(this)">
+                                <input type="radio" id="yes" name="attendance" value="yes" class="radio-input" required>
+                                <label for="yes" style="cursor: pointer; flex: 1;">Да, с удовольствием приду!</label>
+                            </div>
+                            <div class="radio-option" onclick="selectRadio(this)">
+                                <input type="radio" id="no" name="attendance" value="no" class="radio-input">
+                                <label for="no" style="cursor: pointer; flex: 1;">К сожалению, не смогу присутствовать</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="drinks-section">
+                        <h3 class="drinks-title">Что будете пить? (можно выбрать несколько)</h3>
+                        <div class="drinks-grid">
+                            <div class="drink-option">
+                                <input type="checkbox" id="wine" name="drinks" value="wine">
+                                <label for="wine" class="drink-label">
+                                    <i class="fas fa-wine-glass-alt drink-icon"></i>
+                                    <span>Вино</span>
+                                </label>
+                            </div>
+                            <div class="drink-option">
+                                <input type="checkbox" id="champagne" name="drinks" value="champagne">
+                                <label for="champagne" class="drink-label">
+                                    <i class="fas fa-glass-cheers drink-icon"></i>
+                                    <span>Шампанское</span>
+                                </label>
+                            </div>
+                            <div class="drink-option">
+                                <input type="checkbox" id="vodka" name="drinks" value="vodka">
+                                <label for="vodka" class="drink-label">
+                                    <i class="fas fa-cocktail drink-icon"></i>
+                                    <span>Водка</span>
+                                </label>
+                            </div>
+                            <div class="drink-option">
+                                <input type="checkbox" id="cognac" name="drinks" value="cognac">
+                                <label for="cognac" class="drink-label">
+                                    <i class="fas fa-glass-whiskey drink-icon"></i>
+                                    <span>Коньяк</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Отправить ответ</button>
+                    
+                    <div class="form-note">
+                        Ваш ответ поможет нам лучше организовать праздник
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Расписание -->
+        <section class="section" id="schedule">
+            <h2 class="section-title">Расписание дня</h2>
+            
+            <div class="detail-card">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-time">15:30</div>
+                        <div class="timeline-event">Сбор гостей</div>
+                        <div class="timeline-desc">Фуршет, знакомства, фотосессия</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-time">16:00</div>
+                        <div class="timeline-event">Церемония бракосочетания</div>
+                        <div class="timeline-desc">Торжественная часть в беседке</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-time">17:00</div>
+                        <div class="timeline-event">Банкет</div>
+                        <div class="timeline-desc">Праздничный ужин в зале ресторана</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-time">18:30</div>
+                        <div class="timeline-event">Танцы и развлечения</div>
+                        <div class="timeline-desc">Первые танцы молодых, конкурсы</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-time">21:00</div>
+                        <div class="timeline-event">Сладкий стол</div>
+                        <div class="timeline-desc">Торт и десерты</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-time">23:00</div>
+                        <div class="timeline-event">Завершение праздника</div>
+                        <div class="timeline-desc">Прощальные традиции</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Контакты -->
+        <section class="section" id="contacts">
+            <h2 class="section-title">Контакты</h2>
+            
+            <div class="contact-options">
+                <a href="tel:+79991234567" class="contact-btn">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="contact-info">
+                        <h3>Алексей (жених)</h3>
+                        <p>+7 (999) 123-45-67</p>
+                    </div>
+                </a>
+                
+                <a href="tel:+79998765432" class="contact-btn">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="contact-info">
+                        <h3>Мария (невеста)</h3>
+                        <p>+7 (999) 876-54-32</p>
+                    </div>
+                </a>
+                
+                <a href="mailto:wedding@example.com" class="contact-btn">
+                    <i class="fas fa-envelope"></i>
+                    <div class="contact-info">
+                        <h3>Электронная почта</h3>
+                        <p>wedding@example.com</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Футер -->
+        <footer class="footer">
+            <div class="footer-names">Алексей и Мария</div>
+            <p class="footer-text">С нетерпением ждем встречи с вами на нашем празднике!</p>
+            <div class="hashtag">#АлексейиМария2026</div>
+        </footer>
+    </main>
+
+    <!-- Кнопка "Наверх" -->
+    <a href="#home" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // Таймер обратного отсчета
+        function updateCountdown() {
+            const weddingDate = new Date('June 16, 2026 16:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = weddingDate - now;
+
+            if (timeLeft < 0) {
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = days.toString().padStart(3, '0');
+            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+        }
+
+        // Запуск таймера
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Функция для выбора радио-кнопок
+        function selectRadio(element) {
+            const radio = element.querySelector('input[type="radio"]');
+            radio.checked = true;
+            
+            // Удаляем класс selected у всех радио-опций
+            document.querySelectorAll('.radio-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Добавляем класс selected к выбранной опции
+            element.classList.add('selected');
+        }
+
+        // Обработка формы
+        document.getElementById('guestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const attendance = document.querySelector('input[name="attendance"]:checked');
+            const drinks = Array.from(document.querySelectorAll('input[name="drinks"]:checked'))
+                               .map(checkbox => checkbox.value);
+            
+            if (!attendance) {
+                alert('Пожалуйста, подтвердите свое присутствие');
+                return;
+            }
+            
+            // В реальном приложении здесь был бы AJAX-запрос на сервер
+            const message = attendance.value === 'yes' 
+                ? `Спасибо, ${name}! Ждем вас на нашей свадьбе! ${drinks.length ? `Ваши напитки: ${drinks.join(', ')}` : ''}`
+                : `Спасибо за ответ, ${name}. Будем скучать!`;
+            
+            alert(message);
+            
+            // Очистка формы
+            this.reset();
+            document.querySelectorAll('.radio-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+        });
+
+        // Кнопка "Наверх"
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        // Плавная прокрутка для всех ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Анимация появления элементов при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Наблюдаем за всеми секциями
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
