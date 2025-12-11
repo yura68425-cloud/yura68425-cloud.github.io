@@ -41,14 +41,14 @@
             background-color: rgba(248, 244, 239, 0.92);
         }
 
-        /* Герой секция */
+        /* Герой секция - ИСПРАВЛЕН ФОН ДЛЯ МОБИЛЬНЫХ */
         .hero {
             height: 100vh;
             min-height: 600px;
             background: linear-gradient(rgba(139, 115, 85, 0.85), rgba(212, 184, 150, 0.7)),
                         url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
             background-size: cover;
-            background-position: center 30%;
+            background-position: center center;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -57,15 +57,94 @@
             padding: 20px;
             color: white;
             position: relative;
+            overflow: hidden;
         }
 
-        /* Мобильная версия фона */
+        /* На мобильных - смещаем фон вправо, чтобы видеть невесту */
         @media (max-width: 768px) {
             .hero {
-                background: linear-gradient(rgba(139, 115, 85, 0.85), rgba(212, 184, 150, 0.7)),
-                            url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&crop=left');
-                background-position: left center;
+                background: linear-gradient(rgba(139, 115, 85, 0.88), rgba(212, 184, 150, 0.78)),
+                            url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
                 background-size: cover;
+                background-position: 70% center; /* Смещение вправо */
+            }
+        }
+
+        /* Для очень маленьких экранов - еще сильнее вправо */
+        @media (max-width: 480px) {
+            .hero {
+                background: linear-gradient(rgba(139, 115, 85, 0.9), rgba(212, 184, 150, 0.8)),
+                            url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+                background-size: cover;
+                background-position: 75% center; /* Еще правее */
+            }
+        }
+
+        /* Цветочные украшения в герое */
+        .hero-floral {
+            position: absolute;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 1;
+            color: white;
+        }
+
+        .hero-floral-1 {
+            top: 15%;
+            left: 10%;
+            font-size: 50px;
+            transform: rotate(-15deg);
+        }
+
+        .hero-floral-2 {
+            top: 15%;
+            right: 10%;
+            font-size: 45px;
+            transform: rotate(20deg);
+        }
+
+        .hero-floral-3 {
+            bottom: 15%;
+            left: 15%;
+            font-size: 40px;
+            transform: rotate(10deg);
+        }
+
+        .hero-floral-4 {
+            bottom: 15%;
+            right: 15%;
+            font-size: 55px;
+            transform: rotate(-10deg);
+        }
+
+        /* На мобильных - увеличиваем цветы и делаем их больше */
+        @media (max-width: 768px) {
+            .hero-floral {
+                opacity: 0.25;
+            }
+            
+            .hero-floral-1 {
+                top: 10%;
+                left: 5%;
+                font-size: 60px;
+            }
+            
+            .hero-floral-2 {
+                top: 10%;
+                right: 5%;
+                font-size: 55px;
+            }
+            
+            .hero-floral-3 {
+                bottom: 10%;
+                left: 8%;
+                font-size: 50px;
+            }
+            
+            .hero-floral-4 {
+                bottom: 10%;
+                right: 8%;
+                font-size: 65px;
             }
         }
 
@@ -75,6 +154,8 @@
             font-weight: 600;
             margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
         }
 
         .hero .subtitle {
@@ -82,6 +163,8 @@
             opacity: 0.9;
             margin-bottom: 30px;
             max-width: 280px;
+            position: relative;
+            z-index: 2;
         }
 
         .hero .names {
@@ -90,6 +173,8 @@
             margin: 25px 0;
             line-height: 1.1;
             font-weight: 700;
+            position: relative;
+            z-index: 2;
         }
 
         .hero .date {
@@ -100,6 +185,8 @@
             border-radius: 50px;
             border: 1px solid rgba(255,255,255,0.3);
             margin-top: 20px;
+            position: relative;
+            z-index: 2;
         }
 
         .scroll-indicator {
@@ -110,6 +197,7 @@
             animation: bounce 2s infinite;
             color: white;
             font-size: 1.5rem;
+            z-index: 2;
         }
 
         @keyframes bounce {
@@ -133,10 +221,104 @@
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
+        /* Фоновые украшения для всего сайта */
+        .floral-decoration {
+            position: fixed;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .floral-1 {
+            top: 50px;
+            left: 20px;
+            font-size: 100px;
+            color: var(--accent);
+            transform: rotate(15deg);
+            animation-delay: 0s;
+        }
+
+        .floral-2 {
+            bottom: 100px;
+            right: 20px;
+            font-size: 80px;
+            color: var(--secondary);
+            transform: rotate(-10deg);
+            animation-delay: 5s;
+        }
+
+        .floral-3 {
+            top: 40%;
+            right: 15%;
+            font-size: 70px;
+            color: var(--primary);
+            transform: rotate(5deg);
+            animation-delay: 10s;
+        }
+
+        .floral-4 {
+            bottom: 30%;
+            left: 10%;
+            font-size: 90px;
+            color: var(--accent);
+            transform: rotate(-20deg);
+            animation-delay: 15s;
+        }
+
+        /* На мобильных уменьшаем украшения */
+        @media (max-width: 768px) {
+            .floral-decoration {
+                opacity: 0.08;
+            }
+            
+            .floral-1 {
+                font-size: 70px;
+                left: 10px;
+                top: 80px;
+            }
+            
+            .floral-2 {
+                font-size: 60px;
+                right: 10px;
+                bottom: 120px;
+            }
+            
+            .floral-3 {
+                font-size: 50px;
+                right: 8%;
+                top: 35%;
+            }
+            
+            .floral-4 {
+                font-size: 65px;
+                left: 5%;
+                bottom: 25%;
+            }
+        }
+
+        /* На очень маленьких экранах убираем некоторые украшения */
+        @media (max-width: 480px) {
+            .floral-3, .floral-4 {
+                display: none;
+            }
+            
+            .floral-1, .floral-2 {
+                opacity: 0.05;
+            }
+        }
+
         /* Секции */
         .section {
             margin-bottom: 60px;
             animation: fadeUp 0.8s ease-out;
+            position: relative;
+            z-index: 3;
         }
 
         @keyframes fadeUp {
@@ -157,6 +339,7 @@
             text-align: center;
             margin-bottom: 30px;
             position: relative;
+            z-index: 3;
         }
 
         .section-title::after {
@@ -176,6 +359,8 @@
             margin-bottom: 40px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             border: 1px solid rgba(139, 115, 85, 0.1);
+            position: relative;
+            z-index: 3;
         }
 
         .timer-title {
@@ -223,6 +408,8 @@
             margin-bottom: 40px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             border: 1px solid rgba(139, 115, 85, 0.1);
+            position: relative;
+            z-index: 3;
         }
 
         .calendar-header {
@@ -312,6 +499,8 @@
             color: white;
             font-size: 4rem;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 3;
         }
 
         .about-text {
@@ -696,66 +885,6 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* Секция "Расписание" */
-        .timeline {
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 8px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--secondary);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 30px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .timeline-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -28px;
-            top: 3px;
-            width: 18px;
-            height: 18px;
-            background: var(--accent);
-            border-radius: 50%;
-            border: 3px solid white;
-            box-shadow: 0 0 0 3px var(--secondary);
-        }
-
-        .timeline-time {
-            font-weight: 600;
-            color: var(--accent);
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        .timeline-event {
-            font-weight: 500;
-            color: var(--primary);
-            margin-bottom: 3px;
-            font-size: 1.1rem;
-        }
-
-        .timeline-desc {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
         /* Секция "Контакты" */
         .contact-options {
             display: grid;
@@ -884,30 +1013,6 @@
             visibility: visible;
         }
 
-        /* Украшения фона */
-        .floral-decoration {
-            position: absolute;
-            opacity: 0.1;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .floral-1 {
-            top: 50px;
-            left: 20px;
-            font-size: 100px;
-            color: var(--accent);
-            transform: rotate(15deg);
-        }
-
-        .floral-2 {
-            bottom: 100px;
-            right: 20px;
-            font-size: 80px;
-            color: var(--secondary);
-            transform: rotate(-10deg);
-        }
-
         /* Адаптивность */
         @media (max-width: 480px) {
             .hero h1 { font-size: 2.3rem; }
@@ -923,8 +1028,10 @@
             .calendar-day { padding: 12px 3px; font-size: 0.9rem; }
             .rsvp-section, .wishes-details-section { padding: 20px; }
             .wish-card { padding: 20px; }
-            .content { margin: -30px 15px 0; padding: 40px 15px; }
-            .floral-decoration { display: none; }
+            .content { 
+                margin: -30px 15px 0; 
+                padding: 40px 15px; 
+            }
         }
 
         @media (max-width: 350px) {
@@ -937,8 +1044,36 @@
     </style>
 </head>
 <body>
+    <!-- Фоновые украшения для всей страницы -->
+    <div class="floral-decoration floral-1">
+        <i class="fas fa-leaf"></i>
+    </div>
+    <div class="floral-decoration floral-2">
+        <i class="fas fa-feather-alt"></i>
+    </div>
+    <div class="floral-decoration floral-3">
+        <i class="fas fa-spa"></i>
+    </div>
+    <div class="floral-decoration floral-4">
+        <i class="fas fa-seedling"></i>
+    </div>
+
     <!-- Герой секция -->
     <section class="hero" id="home">
+        <!-- Цветочные украшения в герое -->
+        <div class="hero-floral hero-floral-1">
+            <i class="fas fa-leaf"></i>
+        </div>
+        <div class="hero-floral hero-floral-2">
+            <i class="fas fa-feather-alt"></i>
+        </div>
+        <div class="hero-floral hero-floral-3">
+            <i class="fas fa-spa"></i>
+        </div>
+        <div class="hero-floral hero-floral-4">
+            <i class="fas fa-seedling"></i>
+        </div>
+        
         <h1>Мы женимся!</h1>
         <p class="subtitle">Приглашаем вас разделить с нами самый счастливый день</p>
         <div class="names">Алексей<br>и<br>Мария</div>
@@ -947,14 +1082,6 @@
             <i class="fas fa-chevron-down"></i>
         </a>
     </section>
-
-    <!-- Украшения фона -->
-    <div class="floral-decoration floral-1">
-        <i class="fas fa-leaf"></i>
-    </div>
-    <div class="floral-decoration floral-2">
-        <i class="fas fa-feather-alt"></i>
-    </div>
 
     <!-- Основной контент -->
     <main class="content">
@@ -1192,21 +1319,44 @@
             </p>
             
             <div class="rsvp-section">
-                <form id="guestForm">
+                <!-- Сообщение об успешной отправке -->
+                <div id="successMessage" style="display: none; background: #d4edda; color: #155724; 
+                                            padding: 20px; border-radius: 12px; margin-bottom: 25px; 
+                                            text-align: center; border: 1px solid #c3e6cb;">
+                    <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 10px; display: block; color: #28a745;"></i>
+                    <h3 style="color: #155724; margin-bottom: 10px;">Спасибо за ответ!</h3>
+                    <p>Ваш ответ успешно отправлен. Ждем вас на свадьбе!</p>
+                </div>
+                
+                <!-- Сообщение об ошибке -->
+                <div id="errorMessage" style="display: none; background: #f8d7da; color: #721c24; 
+                                            padding: 20px; border-radius: 12px; margin-bottom: 25px; 
+                                            text-align: center; border: 1px solid #f5c6cb;">
+                    <i class="fas fa-exclamation-circle" style="font-size: 2rem; margin-bottom: 10px; display: block; color: #dc3545;"></i>
+                    <h3 style="color: #721c24; margin-bottom: 10px;">Ошибка отправки</h3>
+                    <p>Пожалуйста, попробуйте еще раз или свяжитесь с нами напрямую.</p>
+                </div>
+                
+                <form id="guestForm" action="https://formspree.io/f/meoyrlnw" method="POST">
+                    <!-- Скрытые поля для Formspree -->
+                    <input type="hidden" name="_subject" value="Свадьба Алексей и Мария - Ответ гостя">
+                    <input type="hidden" name="_language" value="ru">
+                    <input type="hidden" name="_replyto" id="replyto" value="">
+                    
                     <div class="form-group">
-                        <label class="form-label" for="name">Фамилия и Имя</label>
-                        <input type="text" id="name" class="input-field" placeholder="Иванов Иван" required>
+                        <label class="form-label" for="name">Фамилия и Имя *</label>
+                        <input type="text" id="name" name="Имя" class="input-field" placeholder="Иванов Иван" required>
                     </div>
                     
                     <div class="form-group">
-                        <label class="form-label">Подтвердите свое присутствие</label>
+                        <label class="form-label">Подтвердите свое присутствие *</label>
                         <div class="radio-group">
                             <div class="radio-option" onclick="selectRadio(this)">
-                                <input type="radio" id="yes" name="attendance" value="yes" class="radio-input" required>
+                                <input type="radio" id="yes" name="Присутствие" value="Да, с удовольствием приду!" class="radio-input" required>
                                 <label for="yes" style="cursor: pointer; flex: 1;">Да, с удовольствием приду!</label>
                             </div>
                             <div class="radio-option" onclick="selectRadio(this)">
-                                <input type="radio" id="no" name="attendance" value="no" class="radio-input">
+                                <input type="radio" id="no" name="Присутствие" value="К сожалению, не смогу присутствовать" class="radio-input">
                                 <label for="no" style="cursor: pointer; flex: 1;">К сожалению, не смогу присутствовать</label>
                             </div>
                         </div>
@@ -1216,28 +1366,28 @@
                         <h3 class="drinks-title">Что будете пить? (можно выбрать несколько)</h3>
                         <div class="drinks-grid">
                             <div class="drink-option">
-                                <input type="checkbox" id="wine" name="drinks" value="wine">
+                                <input type="checkbox" id="wine" name="Напитки[]" value="Вино">
                                 <label for="wine" class="drink-label">
                                     <i class="fas fa-wine-glass-alt drink-icon"></i>
                                     <span>Вино</span>
                                 </label>
                             </div>
                             <div class="drink-option">
-                                <input type="checkbox" id="champagne" name="drinks" value="champagne">
+                                <input type="checkbox" id="champagne" name="Напитки[]" value="Шампанское">
                                 <label for="champagne" class="drink-label">
                                     <i class="fas fa-glass-cheers drink-icon"></i>
                                     <span>Шампанское</span>
                                 </label>
                             </div>
                             <div class="drink-option">
-                                <input type="checkbox" id="vodka" name="drinks" value="vodka">
+                                <input type="checkbox" id="vodka" name="Напитки[]" value="Водка">
                                 <label for="vodka" class="drink-label">
                                     <i class="fas fa-cocktail drink-icon"></i>
                                     <span>Водка</span>
                                 </label>
                             </div>
                             <div class="drink-option">
-                                <input type="checkbox" id="cognac" name="drinks" value="cognac">
+                                <input type="checkbox" id="cognac" name="Напитки[]" value="Коньяк">
                                 <label for="cognac" class="drink-label">
                                     <i class="fas fa-glass-whiskey drink-icon"></i>
                                     <span>Коньяк</span>
@@ -1246,58 +1396,21 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="submit-btn">Отправить ответ</button>
+                    <!-- Дополнительное поле для пожеланий -->
+                    <div class="form-group">
+                        <label class="form-label" for="wishes">Ваши пожелания (необязательно)</label>
+                        <textarea id="wishes" name="Пожелания" class="input-field" placeholder="Ваши пожелания, комментарии..." rows="3"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span id="btnText">Отправить ответ</span>
+                        <i class="fas fa-paper-plane" style="margin-left: 10px;"></i>
+                    </button>
                     
                     <div class="form-note">
-                        Ваш ответ поможет нам лучше организовать праздник
+                        * Обязательные для заполнения поля. Ответ придет нам на почту.
                     </div>
                 </form>
-            </div>
-        </section>
-
-        <!-- Расписание -->
-        <section class="section" id="schedule">
-            <h2 class="section-title">Расписание дня</h2>
-            
-            <div class="detail-card">
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-time">15:30</div>
-                        <div class="timeline-event">Сбор гостей</div>
-                        <div class="timeline-desc">Фуршет, знакомства, фотосессия</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-time">16:00</div>
-                        <div class="timeline-event">Церемония бракосочетания</div>
-                        <div class="timeline-desc">Торжественная часть в беседке</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-time">17:00</div>
-                        <div class="timeline-event">Банкет</div>
-                        <div class="timeline-desc">Праздничный ужин в зале ресторана</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-time">18:30</div>
-                        <div class="timeline-event">Танцы и развлечения</div>
-                        <div class="timeline-desc">Первые танцы молодых, конкурсы</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-time">21:00</div>
-                        <div class="timeline-event">Сладкий стол</div>
-                        <div class="timeline-desc">Торт и десерты</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-time">23:00</div>
-                        <div class="timeline-event">Завершение праздника</div>
-                        <div class="timeline-desc">Прощальные традиции</div>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -1375,47 +1488,121 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
+        // Обработка формы с отправкой на Formspree
+        document.getElementById('guestForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const originalText = btnText.textContent;
+            
+            // Показать состояние загрузки
+            submitBtn.disabled = true;
+            btnText.textContent = 'Отправка...';
+            submitBtn.style.opacity = '0.7';
+            submitBtn.style.cursor = 'wait';
+            
+            // Скрыть предыдущие сообщения
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
+            
+            try {
+                // Создаем FormData
+                const formData = new FormData(form);
+                
+                // Убираем массив напитков и собираем в строку
+                const drinks = [];
+                form.querySelectorAll('input[name="Напитки[]"]:checked').forEach(checkbox => {
+                    drinks.push(checkbox.value);
+                });
+                
+                // Удаляем старые записи напитков
+                formData.delete('Напитки[]');
+                
+                // Добавляем строку с напитками
+                if (drinks.length > 0) {
+                    formData.append('Напитки', drinks.join(', '));
+                } else {
+                    formData.append('Напитки', 'Не указано');
+                }
+                
+                // Добавляем email для ответа (используем имя как email)
+                const name = formData.get('Имя');
+                const emailName = name.replace(/\s+/g, '.').toLowerCase() + '@guest.wedding';
+                document.getElementById('replyto').value = emailName;
+                formData.append('_replyto', emailName);
+                
+                // Отправляем запрос на Formspree
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Успешная отправка
+                    document.getElementById('successMessage').style.display = 'block';
+                    
+                    // Сбросить форму
+                    form.reset();
+                    document.querySelectorAll('.radio-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Прокрутить к сообщению об успехе
+                    setTimeout(() => {
+                        document.getElementById('successMessage').scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    }, 100);
+                    
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Ошибка отправки');
+                }
+                
+            } catch (error) {
+                console.error('Formspree error:', error);
+                document.getElementById('errorMessage').style.display = 'block';
+                
+                // Прокрутить к сообщению об ошибке
+                setTimeout(() => {
+                    document.getElementById('errorMessage').scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }, 100);
+                
+            } finally {
+                // Восстановить кнопку
+                submitBtn.disabled = false;
+                btnText.textContent = originalText;
+                submitBtn.style.opacity = '1';
+                submitBtn.style.cursor = 'pointer';
+                
+                // Автоматически скрыть сообщения через 15 секунд
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                    document.getElementById('errorMessage').style.display = 'none';
+                }, 15000);
+            }
+        });
+
         // Функция для выбора радио-кнопок
         function selectRadio(element) {
             const radio = element.querySelector('input[type="radio"]');
             radio.checked = true;
             
-            // Удаляем класс selected у всех радио-опций
             document.querySelectorAll('.radio-option').forEach(opt => {
                 opt.classList.remove('selected');
             });
             
-            // Добавляем класс selected к выбранной опции
             element.classList.add('selected');
         }
-
-        // Обработка формы
-        document.getElementById('guestForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const attendance = document.querySelector('input[name="attendance"]:checked');
-            const drinks = Array.from(document.querySelectorAll('input[name="drinks"]:checked'))
-                               .map(checkbox => checkbox.value);
-            
-            if (!attendance) {
-                alert('Пожалуйста, подтвердите свое присутствие');
-                return;
-            }
-            
-            // В реальном приложении здесь был бы AJAX-запрос на сервер
-            const message = attendance.value === 'yes' 
-                ? `Спасибо, ${name}! Ждем вас на нашей свадьбе! ${drinks.length ? `Ваши напитки: ${drinks.join(', ')}` : ''}`
-                : `Спасибо за ответ, ${name}. Будем скучать!`;
-            
-            alert(message);
-            
-            // Очистка формы
-            this.reset();
-            document.querySelectorAll('.radio-option').forEach(opt => {
-                opt.classList.remove('selected');
-            });
-        });
 
         // Кнопка "Наверх"
         const backToTop = document.getElementById('backToTop');
@@ -1468,6 +1655,20 @@
             section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(section);
         });
+
+        // Анимация плавающих элементов
+        function animateFloatingElements() {
+            const elements = document.querySelectorAll('.floral-decoration');
+            elements.forEach((el, index) => {
+                const delay = index * 2000;
+                setTimeout(() => {
+                    el.style.animation = 'float 20s infinite ease-in-out';
+                }, delay);
+            });
+        }
+
+        // Запуск анимации плавающих элементов
+        animateFloatingElements();
     </script>
 </body>
 </html>
