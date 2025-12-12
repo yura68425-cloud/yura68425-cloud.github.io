@@ -41,7 +41,187 @@
             background-color: rgba(248, 244, 239, 0.92);
         }
 
-        /* Герой секция - ИСПРАВЛЕН ФОН ДЛЯ МОБИЛЬНЫХ */
+        /* Музыкальный плеер */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 12px 20px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 115, 85, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .music-player.mobile {
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .music-player:not(.mobile) {
+                display: none;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .music-player.mobile {
+                display: none;
+            }
+        }
+        
+        .music-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+        
+        .music-btn:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+        
+        .music-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            max-width: 180px;
+        }
+        
+        .music-title {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .music-status {
+            font-size: 0.8rem;
+            color: var(--dark);
+            opacity: 0.7;
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 5px;
+        }
+        
+        .volume-slider {
+            width: 70px;
+            height: 4px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #ddd;
+            border-radius: 2px;
+            outline: none;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+        }
+        
+        /* Уведомление о музыке */
+        .music-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 115, 85, 0.2);
+            display: none;
+            align-items: center;
+            gap: 12px;
+            max-width: 300px;
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .notification-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        
+        .notification-content {
+            flex: 1;
+        }
+        
+        .notification-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+        
+        .notification-text {
+            font-size: 0.85rem;
+            color: var(--dark);
+            line-height: 1.4;
+        }
+        
+        .close-notification {
+            background: none;
+            border: none;
+            color: var(--dark);
+            font-size: 1rem;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        
+        .close-notification:hover {
+            opacity: 1;
+        }
+
+        /* Герой секция */
         .hero {
             height: 100vh;
             min-height: 600px;
@@ -60,27 +240,24 @@
             overflow: hidden;
         }
 
-        /* На мобильных - смещаем фон вправо, чтобы видеть невесту */
         @media (max-width: 768px) {
             .hero {
                 background: linear-gradient(rgba(139, 115, 85, 0.88), rgba(212, 184, 150, 0.78)),
                             url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
                 background-size: cover;
-                background-position: 70% center; /* Смещение вправо */
+                background-position: 70% center;
             }
         }
 
-        /* Для очень маленьких экранов - еще сильнее вправо */
         @media (max-width: 480px) {
             .hero {
                 background: linear-gradient(rgba(139, 115, 85, 0.9), rgba(212, 184, 150, 0.8)),
                             url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
                 background-size: cover;
-                background-position: 75% center; /* Еще правее */
+                background-position: 75% center;
             }
         }
 
-        /* Цветочные украшения в герое */
         .hero-floral {
             position: absolute;
             opacity: 0.3;
@@ -117,7 +294,6 @@
             transform: rotate(-10deg);
         }
 
-        /* На мобильных - увеличиваем цветы и делаем их больше */
         @media (max-width: 768px) {
             .hero-floral {
                 opacity: 0.25;
@@ -206,7 +382,6 @@
             60% { transform: translateY(-5px) translateX(-50%); }
         }
 
-        /* Основной контент */
         .content {
             max-width: 600px;
             margin: 0 auto;
@@ -221,7 +396,6 @@
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
-        /* Фоновые украшения для всего сайта */
         .floral-decoration {
             position: fixed;
             opacity: 0.1;
@@ -271,7 +445,6 @@
             animation-delay: 15s;
         }
 
-        /* На мобильных уменьшаем украшения */
         @media (max-width: 768px) {
             .floral-decoration {
                 opacity: 0.08;
@@ -302,7 +475,6 @@
             }
         }
 
-        /* На очень маленьких экранах убираем некоторые украшения */
         @media (max-width: 480px) {
             .floral-3, .floral-4 {
                 display: none;
@@ -313,7 +485,6 @@
             }
         }
 
-        /* Секции */
         .section {
             margin-bottom: 60px;
             animation: fadeUp 0.8s ease-out;
@@ -351,7 +522,6 @@
             margin: 10px auto 0;
         }
 
-        /* Таймер обратного отсчета */
         .countdown-timer {
             background: var(--calendar-bg);
             border-radius: 20px;
@@ -400,7 +570,6 @@
             letter-spacing: 1px;
         }
 
-        /* Календарь */
         .calendar-section {
             background: var(--calendar-bg);
             border-radius: 20px;
@@ -486,7 +655,6 @@
             font-size: 0.95rem;
         }
 
-        /* Секция "О нас" */
         .couple-photo {
             width: 200px;
             height: 200px;
@@ -517,7 +685,6 @@
             font-size: 1.8rem;
         }
 
-        /* Кнопка карты */
         .map-button-container {
             text-align: center;
             margin: 40px 0;
@@ -551,7 +718,6 @@
             font-size: 1.4rem;
         }
 
-        /* Секция "Детали" */
         .details-grid {
             display: grid;
             gap: 20px;
@@ -596,7 +762,6 @@
             font-size: 1.05rem;
         }
 
-        /* Анкета гостя */
         .rsvp-section {
             background: white;
             border-radius: 20px;
@@ -781,7 +946,6 @@
             font-style: italic;
         }
 
-        /* Секция "Детали и пожелания" */
         .wishes-details-section {
             background: linear-gradient(135deg, #FFF9F0 0%, #FFF5E8 100%);
             border-radius: 20px;
@@ -885,7 +1049,6 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* Секция "Контакты" */
         .contact-options {
             display: grid;
             gap: 15px;
@@ -936,7 +1099,6 @@
             font-size: 1rem;
         }
 
-        /* Футер */
         .footer {
             background: var(--primary);
             color: white;
@@ -984,7 +1146,6 @@
             z-index: 2;
         }
 
-        /* Кнопка "Наверх" */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -1013,7 +1174,6 @@
             visibility: visible;
         }
 
-        /* Адаптивность */
         @media (max-width: 480px) {
             .hero h1 { font-size: 2.3rem; }
             .hero .names { font-size: 2.8rem; }
@@ -1032,6 +1192,13 @@
                 margin: -30px 15px 0; 
                 padding: 40px 15px; 
             }
+            .music-player.mobile {
+                bottom: 70px;
+                padding: 10px 15px;
+            }
+            .music-info {
+                max-width: 140px;
+            }
         }
 
         @media (max-width: 350px) {
@@ -1040,10 +1207,53 @@
             .section { margin-bottom: 50px; }
             .timer-grid { grid-template-columns: 1fr; }
             .calendar-grid { gap: 8px; }
+            .music-player.mobile {
+                bottom: 60px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Музыкальное уведомление -->
+    <div class="music-notification" id="musicNotification">
+        <div class="notification-icon">
+            <i class="fas fa-music"></i>
+        </div>
+        <div class="notification-content">
+            <div class="notification-title">Фоновая музыка</div>
+            <div class="notification-text">Включена свадебная музыка. Вы можете управлять плеером в левом нижнем углу</div>
+        </div>
+        <button class="close-notification" id="closeNotification">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- Музыкальный плеер для десктопа -->
+    <div class="music-player" id="desktopPlayer">
+        <button class="music-btn" id="playPauseBtn">
+            <i class="fas fa-play" id="playIcon"></i>
+        </button>
+        <div class="music-info">
+            <div class="music-title" id="songTitle">Свадебная музыка</div>
+            <div class="music-status" id="playerStatus">Воспроизведение...</div>
+        </div>
+        <div class="volume-control">
+            <i class="fas fa-volume-up" id="volumeIcon"></i>
+            <input type="range" min="0" max="100" value="50" class="volume-slider" id="volumeSlider">
+        </div>
+    </div>
+
+    <!-- Музыкальный плеер для мобильных -->
+    <div class="music-player mobile" id="mobilePlayer">
+        <button class="music-btn" id="playPauseBtnMobile">
+            <i class="fas fa-play" id="playIconMobile"></i>
+        </button>
+        <div class="music-info">
+            <div class="music-title">Свадебная музыка</div>
+            <div class="music-status" id="playerStatusMobile">Воспроизведение...</div>
+        </div>
+    </div>
+
     <!-- Фоновые украшения для всей страницы -->
     <div class="floral-decoration floral-1">
         <i class="fas fa-leaf"></i>
@@ -1077,6 +1287,7 @@
         <h1>Мы женимся!</h1>
         <p class="subtitle">Приглашаем вас разделить с нами самый счастливый день</p>
         <div class="names">Юрий<br>и<br>Анна</div>
+        <div class="date">16 июня 2026</div>
         <a href="#timer" class="scroll-indicator">
             <i class="fas fa-chevron-down"></i>
         </a>
@@ -1340,7 +1551,7 @@
                 <!-- Измененная форма с правильными именами полей -->
                 <form id="guestForm">
                     <!-- Скрытые поля для Formspree -->
-                    <input type="hidden" name="_subject" value="Свадьба Алексей и Мария - Ответ гостя">
+                    <input type="hidden" name="_subject" value="Свадьба Юрий и Анна - Ответ гостя">
                     <input type="hidden" name="_language" value="ru">
                     <input type="hidden" name="_replyto" id="replyto" value="wedding@example.com">
                     
@@ -1436,7 +1647,7 @@
                     </div>
                 </a>
                 
-                <a href="mailto:wedding@example.com" class="contact-btn">
+                <a href="mailto:yura_bylets@icloud.com" class="contact-btn">
                     <i class="fas fa-envelope"></i>
                     <div class="contact-info">
                         <h3>Электронная почта</h3>
@@ -1525,7 +1736,145 @@
         <i class="fas fa-chevron-up"></i>
     </a>
 
+    <!-- YouTube iframe API -->
+    <div id="player" style="display: none;"></div>
+
     <script>
+        // ===== МУЗЫКАЛЬНЫЙ ПЛЕЕР =====
+        let player;
+        let isPlaying = false;
+        let volume = 0.5; // Начальная громкость 50%
+        
+        // Функция загрузки YouTube API
+        function loadYouTubeAPI() {
+            const tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }
+        
+        // Инициализация плеера YouTube
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '0',
+                width: '0',
+                videoId: 'WikAeXGsmHY', // ID из вашей ссылки
+                playerVars: {
+                    'autoplay': 1,
+                    'controls': 0,
+                    'disablekb': 1,
+                    'enablejsapi': 1,
+                    'fs': 0,
+                    'iv_load_policy': 3,
+                    'loop': 1,
+                    'modestbranding': 1,
+                    'playsinline': 1,
+                    'rel': 0,
+                    'showinfo': 0
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange,
+                    'onError': onPlayerError
+                }
+            });
+        }
+        
+        function onPlayerReady(event) {
+            // Устанавливаем начальную громкость
+            event.target.setVolume(volume * 100);
+            
+            // Показываем уведомление о музыке
+            setTimeout(() => {
+                showMusicNotification();
+            }, 1500);
+            
+            // Обновляем статус плеера
+            updatePlayerStatus();
+        }
+        
+        function onPlayerStateChange(event) {
+            updatePlayerStatus();
+        }
+        
+        function onPlayerError(event) {
+            console.error('Ошибка YouTube плеера:', event.data);
+            document.getElementById('playerStatus').textContent = 'Ошибка воспроизведения';
+            document.getElementById('playerStatusMobile').textContent = 'Ошибка воспроизведения';
+        }
+        
+        function updatePlayerStatus() {
+            if (!player) return;
+            
+            const state = player.getPlayerState();
+            const playIcon = document.getElementById('playIcon');
+            const playIconMobile = document.getElementById('playIconMobile');
+            const status = document.getElementById('playerStatus');
+            const statusMobile = document.getElementById('playerStatusMobile');
+            
+            if (state === YT.PlayerState.PLAYING) {
+                isPlaying = true;
+                playIcon.className = 'fas fa-pause';
+                playIconMobile.className = 'fas fa-pause';
+                status.textContent = 'Воспроизведение...';
+                statusMobile.textContent = 'Воспроизведение...';
+            } else if (state === YT.PlayerState.PAUSED || state === YT.PlayerState.ENDED) {
+                isPlaying = false;
+                playIcon.className = 'fas fa-play';
+                playIconMobile.className = 'fas fa-play';
+                status.textContent = 'На паузе';
+                statusMobile.textContent = 'На паузе';
+            }
+        }
+        
+        // Управление воспроизведением
+        function togglePlayPause() {
+            if (!player) return;
+            
+            if (isPlaying) {
+                player.pauseVideo();
+            } else {
+                player.playVideo();
+            }
+            isPlaying = !isPlaying;
+        }
+        
+        // Управление громкостью
+        function updateVolume() {
+            if (!player) return;
+            const slider = document.getElementById('volumeSlider');
+            volume = slider.value / 100;
+            player.setVolume(volume * 100);
+            
+            // Обновляем иконку громкости
+            const volumeIcon = document.getElementById('volumeIcon');
+            if (volume === 0) {
+                volumeIcon.className = 'fas fa-volume-mute';
+            } else if (volume < 0.5) {
+                volumeIcon.className = 'fas fa-volume-down';
+            } else {
+                volumeIcon.className = 'fas fa-volume-up';
+            }
+        }
+        
+        // Показать уведомление о музыке
+        function showMusicNotification() {
+            const notification = document.getElementById('musicNotification');
+            notification.style.display = 'flex';
+            
+            // Автоматически скрыть через 8 секунд
+            setTimeout(() => {
+                hideMusicNotification();
+            }, 8000);
+        }
+        
+        function hideMusicNotification() {
+            const notification = document.getElementById('musicNotification');
+            notification.style.display = 'none';
+        }
+        
+        // ===== ОСНОВНЫЕ ФУНКЦИОНАЛЫ =====
+        
         // Таймер обратного отсчета
         function updateCountdown() {
             const weddingDate = new Date('June 16, 2026 16:00:00').getTime();
@@ -1550,10 +1899,6 @@
             document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
             document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
         }
-
-        // Запуск таймера
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
 
         // Обработка формы с отправкой на Formspree
         document.getElementById('guestForm').addEventListener('submit', async function(e) {
@@ -1613,8 +1958,8 @@
                 formspreeFormData.append('attendance', attendance);
                 formspreeFormData.append('drinks', drinksText);
                 formspreeFormData.append('wishes', wishes);
-                formspreeFormData.append('_subject', `Свадьба Алексей и Мария: Ответ от ${name}`);
-                formspreeFormData.append('_replyto', 'wedding@example.com');
+                formspreeFormData.append('_subject', `Свадьба Юрий и Анна: Ответ от ${name}`);
+                formspreeFormData.append('_replyto', 'yura_bylets@icloud.com');
                 
                 // Отправляем на Formspree
                 const response = await fetch('https://formspree.io/f/meoyrlnw', {
@@ -1738,20 +2083,6 @@
             observer.observe(section);
         });
 
-        // Анимация плавающих элементов
-        function animateFloatingElements() {
-            const elements = document.querySelectorAll('.floral-decoration');
-            elements.forEach((el, index) => {
-                const delay = index * 2000;
-                setTimeout(() => {
-                    el.style.animation = 'float 20s infinite ease-in-out';
-                }, delay);
-            });
-        }
-
-        // Запуск анимации плавающих элементов
-        animateFloatingElements();
-
         // ===== СЛАЙДЕР ФОТОГАЛЕРЕИ =====
         document.addEventListener('DOMContentLoaded', function() {
             const slider = document.querySelector('.gallery-slider');
@@ -1811,6 +2142,35 @@
                         updateSlider();
                     }, 5000);
                 });
+            }
+        });
+
+        // ===== ИНИЦИАЛИЗАЦИЯ =====
+        
+        // Запуск таймера
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Загрузка YouTube API
+        loadYouTubeAPI();
+        
+        // Назначение обработчиков событий для музыкального плеера
+        document.getElementById('playPauseBtn').addEventListener('click', togglePlayPause);
+        document.getElementById('playPauseBtnMobile').addEventListener('click', togglePlayPause);
+        document.getElementById('volumeSlider').addEventListener('input', updateVolume);
+        document.getElementById('closeNotification').addEventListener('click', hideMusicNotification);
+        
+        // Сохранение настроек громкости в localStorage
+        document.getElementById('volumeSlider').addEventListener('change', function() {
+            localStorage.setItem('weddingPlayerVolume', this.value);
+        });
+        
+        // Восстановление громкости из localStorage
+        window.addEventListener('load', function() {
+            const savedVolume = localStorage.getItem('weddingPlayerVolume');
+            if (savedVolume) {
+                document.getElementById('volumeSlider').value = savedVolume;
+                volume = savedVolume / 100;
             }
         });
     </script>
